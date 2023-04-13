@@ -1,10 +1,11 @@
-type Post @model {
+
+type Post @model @auth(rules: [{ allow: public }]){
   postId: ID! @primaryKey
   node: PostNode! @belongsTo(fields: ["postId"])
   title: String!
 }
 
-type PostNode @model {
+type PostNode @model @auth(rules: [{ allow: public }]) {
   id: ID!
   post: Post! @hasOne
 }
